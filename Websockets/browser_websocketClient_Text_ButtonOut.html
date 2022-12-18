@@ -1,0 +1,89 @@
+
+
+
+<!---------- BUTTONS FOR SENDING THINGS TO WEBSOCKET ------>
+<!---------- BUTTONS FOR SENDING THINGS TO WEBSOCKET ------>
+
+<p>
+<button id="button" class="button" onclick="toggle0()">Send 0</button>
+<button id="button" class="button" onclick="toggle1()">Send 1</button>
+</p>
+<script>
+  function toggle0(){
+    socket.send('0');
+  }
+  function toggle1(){
+    socket.send('1');
+  }
+</script>
+
+<!---------- OLDER STUFF ------>
+
+<div id="myArduinoDiv">Waiting for Arduino data.</div>
+
+<style>
+  #content {
+    height: 500px;
+    overflow: auto;
+  }
+</style>
+<div id="content"></div>
+
+<script type="text/javascript">  
+
+    var content = document.getElementById('content');
+
+    //var socket = new WebSocket('ws://localhost:1337');
+    var socket = new WebSocket('ws://192.168.0.104/ws');
+
+    socket.onopen = function () {
+        socket.send('hello from the client');
+    };
+
+
+    socket.onmessage = function (message) {
+
+
+		// ====== Extract the data from arduino (into 'arduinoData') and display it in a color text
+
+		var arduinoDataString = message.data;
+		const arduinoDataSplit = arduinoDataString.split(",");
+		
+		var arduinoData1 = parseInt(arduinoDataSplit[0]);
+		var arduinoData2 = parseInt(arduinoDataSplit[1]);
+		var arduinoData3 = parseInt(arduinoDataSplit[2]);
+
+
+
+		// Expand the log of messages
+
+		content.innerHTML = message.data +'<br />' + content.innerHTML;
+
+		// Change the colorful Arduino text label 
+		document.getElementById("myArduinoDiv").innerHTML = arduinoData1;
+		document.getElementById("myArduinoDiv").style.color = "rgb("+arduinoData1+",0,0)";
+
+
+
+
+		// ====== DO OTHER THINGS WITH ARDUINODATA ==========
+
+		// ...
+
+    };
+
+    socket.onerror = function (error) {
+        console.log('WebSocket error: ' + error);
+    };
+
+
+
+</script>
+
+
+
+
+
+
+
+
