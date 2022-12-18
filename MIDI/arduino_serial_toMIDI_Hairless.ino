@@ -1,5 +1,5 @@
 // Most basic way of connecting Arduino to MIDI - requires HairlessMIDI to run on the computer to translate serial to a MIDI device
-// Some example instructions:
+// Some other examples / instructions:
 //    midi from analog input: https://forum.arduino.cc/t/hairless-midi-sending-data-continuously/944656/12
 //    midi from buttons: https://www.instructables.com/Send-and-Receive-MIDI-with-Arduino/
 
