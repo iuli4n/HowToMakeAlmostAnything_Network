@@ -1,0 +1,22 @@
+GENERAL INTRO TO TCP
+
+http://www.steves-internet-guide.com/tcpip-ports-sockets/
+
+
+
+ESP32 EXAMPLES
+
+
+example esp32 TCP client & server
+https://www.megunolink.com/articles/wireless/talk-esp32-over-wifi/#Creating_a_TCP_Server
+
+
+UNITY EXAMPLES
+
+example TCP client for Unity
+https://gist.github.com/danielbierwirth/0636650b005834204cb19ef5ae6ccedb
+
+
+
+
+
