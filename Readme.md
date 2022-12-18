@@ -2,7 +2,17 @@
 
 This repository is a collection of simple scripts to connect between Arduinos (ex: ESP32), Webpages, Unity3D AR/VR, Python, Processing P5.JS, etc. It was created for courses like MIT How To Make Almost Anything and Harvard PS70 / T519 Intro to Digital Fabrication where electronic devices are connected through cables or wifi.
 
+These devices / apps can be connected building on the scripts in this repo:
 
+* **Arduinos** including ESP32 (ex: connections over USB serial port, over Wifi websockets, over MIDI, etc)
+
+* **Webpages** (ex: connecting a web XR webpage to ESP32 using Websockets)
+
+* **Processing** (ex: connecting Arduino to a P5JS visualization through websockets, or to Processing4 using usb serial port)
+
+* **Python** (ex: running a websocket server in python)
+
+* **Ableton** (ex: connecting an Arduino to Ableton music using MIDI serial)
 
 # Repository contents
 
@@ -13,8 +23,6 @@ This repository is a collection of simple scripts to connect between Arduinos (e
 - **MIDI**: Scripts for communicating MIDI over USB
 
 - **TCP_UDP**: (under construction) Scripts for raw communication through TCP/UDP sockets.
-
-
 
 # Introduction: Ways of connecting devices
 
@@ -29,9 +37,3 @@ There are many ways of connecting depending on if you have wires or wireless.
 * Here are some example setups:
 
 ![](image_ExampleConnections.png)
-
-
-
-
-
-
