@@ -6,7 +6,7 @@
 byte noteON = 144;//noteon command code
 
 void setup() {
-  Serial.begin(9600);// REMEMBER TO SET HAIRLESSMIDI to the same rate
+  Serial.begin(9600);// in HairlessMIDI you will need to use the same rate
 }
 
 //send MIDI message to USB. you will need to use HairlessMIDI to transform this into an actual MIDI device connection
