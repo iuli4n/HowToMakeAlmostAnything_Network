@@ -1,6 +1,7 @@
 # requires Python3 and aioconsole library
-
 # runs a WebSocket server where there's a local variable being broadcast to all clients
+#
+# Other python websocket examples: https://www.piesocket.com/blog/python-websocket
 
 import sys
 import functools
@@ -45,11 +46,12 @@ asyncio.get_event_loop().create_task(incrementor())
 # start server
 start_server = websockets.serve(wsclient_handler, "localhost", 8000)
 asyncio.get_event_loop().run_until_complete(start_server)
+print ("Server running. Waiting for clients...")
 
 # wait for keypress
 
 async def waitkey():
-    line = await aioconsole.ainput('Press ENTER to quit.')
+    line = await aioconsole.ainput('Press CTRL+C or ENTER to quit.')
     print("*** THIS MAY RAISE ERRORS ****")
 
 loop = asyncio.get_event_loop()
