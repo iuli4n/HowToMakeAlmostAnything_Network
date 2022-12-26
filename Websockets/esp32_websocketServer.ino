@@ -1,7 +1,9 @@
 /*********
  * Makes the ESP32 function as a websocket server that sends 3 numeric data to websocket, and receives 1 number (if >0 makes something happen)
  * Based on code from https://RandomNerdTutorials.com/esp32-websocket-server-arduino/
- *********/
+ *****
+ * To connect to this, use this address:   ws://IP:80/ws    (where IP = address of device where this code is running)
+ ****/
 
 // enable this line only if you're using M5STICKC
 //#define USINGM5STICKC

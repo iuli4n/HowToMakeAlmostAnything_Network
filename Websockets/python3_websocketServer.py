@@ -1,5 +1,6 @@
 # requires Python3 and aioconsole library
-# runs a WebSocket server where there's a local variable being broadcast to all clients
+# This runs a WebSocket server where there's a local variable being broadcast to all clients
+# This doesn't talk to Arduino.
 #
 # Other python websocket examples: https://www.piesocket.com/blog/python-websocket
 
