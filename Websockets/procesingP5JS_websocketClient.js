@@ -1,5 +1,5 @@
-// Connects to the websocket server and moves an ellipse on the screen based on the number it receives from the websocket
-
+// Connects to the websocket server and moves an ellipse on the screen based on the numbers it receives from the websocket
+// It expects to receive text containing 3 numbers: "A,B,C"
 
 //------------- WEBSOCKET START --------------
 // HOW TO INTEGRATE INTO YOUR OWN SKETCH: 
