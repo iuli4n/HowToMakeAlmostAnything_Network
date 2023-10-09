@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+ 
+<head>
+    <meta charset="UTF-8" />
+    <title>POST DEMO</title>
+</head>
+ 
+<body>
+    <form>
+        <div>
+            <label>Username</label>
+            <input type="text" id="user" />
+        </div>
+        <div>
+            <label>Password</label>
+            <input type="password" id="pass" />
+        </div>
+        <button type="submit">Submit</button>
+    </form>
+	
+	<textarea id="resultText">Result</textarea>
+ 
+    <script>
+        document.querySelector('button')
+            .addEventListener('click', processClick);
+
+        async function processClick(e) {
+          e.preventDefault();
+
+          const username = document.querySelector('#user').value;
+          const password = document.querySelector('#pass').value;
+
+          try {
+            var postResponse = await fetch("http://localhost:8080/", {
+              method: 'POST',
+              headers: {
+                'Content-Type': 'application/json',
+              },
+              body: JSON.stringify({
+                user: username,
+                pass: password,
+              }),
+            });
+
+            var receivedData = await postResponse.json();
+
+            var place = document.getElementById("resultText");
+            place.innerHTML = JSON.stringify(receivedData);
+            console.log(receivedData)
+
+
+          } catch (error) {
+              var place = document.getElementById("resultText");
+                place.innerHTML = "ERROR: " + error;
+                console.error('Error:', error);
+            }
+        };
+    </script>
+</body>
+ 
+</html>

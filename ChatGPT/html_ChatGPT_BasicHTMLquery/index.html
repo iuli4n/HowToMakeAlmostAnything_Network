@@ -1,0 +1,144 @@
+<html>
+<head>
+<style>
+html, body{
+    height: 100%;
+}
+
+
+textarea{
+	border:none;
+	border:thick solid green;
+  margin:0;
+	width:95%;
+  height:100%;
+	resize:none;
+	
+}
+
+
+
+
+
+
+.buttons {
+  flex: 1;
+  min-height: 0; 
+  padding: 0.5rem;
+  background-color: black;
+  color: white;
+  border: 1px solid white;
+  font-family: 'Courier New', Courier, monospace;
+  cursor: pointer;
+  outline: none;
+  box-sizing: border-box;
+}
+.buttons:hover {
+  background-color: black;
+  color: lightgreen;
+}
+.buttons:active {
+  background-color: lightgreen;
+  color: black;
+}
+
+</style>
+</head>
+
+
+
+
+<body>
+
+<form>
+<div>
+Query:
+<input type="text" id="prompt" />
+OpenAI API KEY
+<input type="text" id="apikey" />
+</div>
+<button id="button1" class="buttons" type="submit">Query</button>
+</form>
+
+
+<div style="height:20%">
+  <textarea id="textArea1" readonly>
+    
+  </textarea>
+</div>
+
+
+
+<script>
+  // get the button and make it respond to a click
+//var theButton = document.getElementById("button1");
+//theButton.onclick = doButtonClick;
+
+document.querySelector('#button1')
+            .addEventListener('click', processClick);
+
+async function processClick(e) {
+  e.preventDefault();
+
+  printText("Working...");
+
+  const prompt = document.querySelector('#prompt').value;
+  const APIKEY = document.querySelector('#apikey').value;
+  
+  var receivedData = '';
+  
+  try {
+
+    if (!APIKEY) {
+    	printText("You need an API key from openai.com");
+      return;
+    }
+    
+    var bod = `{
+     "model": "gpt-3.5-turbo",
+     "messages": [{"role": "user", "content": "${prompt}"}],
+     "temperature": 0.7
+   }`;
+   
+
+    var postResponse = await fetch("https://api.openai.com/v1/chat/completions", {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        'Authorization': 'Bearer '+APIKEY,
+      },
+      body: bod
+    });
+
+
+    receivedData = await postResponse.json();
+    //printText(JSON.stringify(receivedData));
+    
+    printText(receivedData.choices[0].message.content);
+    return;
+
+
+
+  } catch (error) {
+    printText("ERROR: " + error +"\nRESPONSE FROM OPENAI: "+JSON.stringify(receivedData));
+    console.error('Error:', error, "\nRESPONSE FROM OPENAI: ", JSON.stringify(receivedData));
+  }
+};
+
+function printText(s, id="textArea1") {
+
+  console.log(s);
+  
+  var place = document.getElementById(id);
+  place.innerHTML = s;
+
+}
+
+
+</script>
+
+
+</body>
+ 
+</html>
+
